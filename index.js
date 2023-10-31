@@ -5,7 +5,13 @@ const app = express();
 const WSServer = require('express-ws')(app);
 const aWss = WSServer.getWss();
 
-app.use(cors());
+app.use(
+	cors({
+		origin: 'http://localhost:5173',
+		methods: ['POST', 'GET'],
+		credentials: true,
+	})
+);
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
